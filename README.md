@@ -1,2 +1,3 @@
 # Simpsons-Card-Game
-Simpsons Card Game in JavaScript and jQuery
+Simpsons Memory Card Game in JavaScript and jQuery
+
