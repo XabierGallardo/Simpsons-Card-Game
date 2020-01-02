@@ -59,7 +59,8 @@ function shuffleCards() {
 
 	//Show the initial score
 	showScore();
-	$("#clock").innerHTML = "1:00.0";
+	//$("#clock").html = "1:00.0";
+	document.getElementById("clock").innerHTML = "1:00.0";
 }
 
 //Enable transition efect on cards
@@ -75,7 +76,8 @@ function enableTransition() {
 
 //Show score on label
 function showScore() {
-	$("#score").innerHTML = "SCORE: " + score;
+	//$("#score").html = "SCORE: " + score;
+	document.getElementById("score").innerHTML = "SCORE: " + score;
 
 	//Check if score is 0
 	if (score === 0) {
@@ -105,23 +107,23 @@ function cronos() {
 		milis = Math.floor((milis % 1000)/100);
 	}
 	var show = min + ":" + seg + ":" + milis;
-	$("#clock").innerHTML = show;
-	if (milis === 0) {
+	document.getElementById("clock").innerHTML = show;
+	if (milisIni === 0) {
 		showGameOver();
 	}
 }
 
 //Show Game Over message and button
 function showGameOver() {
-	$("#gameOver").style.display = "inline";
-	$("#gameOverBtn").addEventListener("click", restartGame, true);
+	document.getElementById("gameOver").style.display = "inline";
+	document.getElementById("gameOverBtn").addEventListener("click", restartGame, true);
 	endGame();
 }
 
 //Show Victory message and button
 function showVictory() {
-	$("#victory").style.display = "inline";
-	$("#victoryBtn").addEventListener("click", restartGame, true);
+	document.getElementById("victory").style.display = "inline";
+	document.getElementById("victoryBtn").addEventListener("click", restartGame, true);
 	endGame();
 }
 
@@ -134,11 +136,10 @@ function endGame() {
 
 //Restart game parameters and hide messages
 function restartGame(event) {
-	alert("test");
 	event.target.removeEventListener("click", restartGame, true);
 	shuffleCards();
-	$("#gameOver").style.display = "none";
-	$("#victory").style.display = "none";
+	document.getElementById("gameOver").style.display = "none";
+	document.getElementById("victory").style.display = "none";
 }
 
 //When click event pops over a card
@@ -164,8 +165,8 @@ function clickCard(event) {
 				currentCard = element.id;
 
 				//Restart images
-				var currentPicture = $("#currentCard").style.backgroundImage;
-				var previousPicture = $("#previousCard").style.backgroundImage;
+				var currentPicture = document.getElementById(currentCard).style.backgroundImage;
+				var previousPicture = document.getElementById(previousCard).style.backgroundImage;
 
 				//Check if both images are the same
 				if (currentPicture === previousPicture) {
@@ -192,8 +193,8 @@ function clickCard(event) {
 
 function hideCards() {
 	//Reverse cards to hide them
-	$("#previousCard").style.backgroundImage = reverse;
-	$("#currentCard").style.backgroundImage = reverse;
+	document.getElementById(previousCard).style.backgroundImage = reverse;
+	document.getElementById(currentCard).style.backgroundImage = reverse;
 	//Initialices new try
 	newTry();
 }
@@ -203,17 +204,17 @@ function removeCards() {
 	pairCards++;
 
 	//Remove from the game all pairs, hide them and removing events
-	$("#previousCard").style.visibility = "hidden";
-	$("#previousCard").removeEventListener("click", clickCard, true);
-	$("#currentCard").style.visibility = "hidden";
-	$("#currentCard").removeEventListener("click", clickCard, true);
+	document.getElementById(previousCard).style.visibility = "hidden";
+	document.getElementById(previousCard).removeEventListener("click", clickCard, true);
+	document.getElementById(currentCard).style.visibility = "hidden";
+	document.getElementById(currentCard).removeEventListener("click", clickCard, true);
 
 	//Check if the game is still on
 	if (pairCards < 6) {
 		newTry();
 	} else {
 		//Or it's over
-		showVictory()
+		showVictory();
 	}
 }
 
