@@ -1,5 +1,10 @@
 body {
-	background-color: lightgray;
+	background-color: gainsboro;
+}
+
+#timer {
+	display: flex;
+	align-items: baseline;
 }
 
 #content {
@@ -13,8 +18,8 @@ body {
 }
 
 .card {
-	border:2px solid navy;
-	border-radius: 10px;
+	border:2px solid;
+	border-radius: 5px;
 	width: 160px;
 	height: 260px;
 	margin: 10px;
@@ -22,16 +27,18 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	background-color: white;
 	transition: background 0.3s ease-in-out;
 }
 
-#score {
-	width: 200px;
-	height: 10px;
-	padding: 50px;
-	border-radius: 200px;
-	font-size: 20px;
+
+#score, #clock {
+	font-size: 32px;
+	flex: 1;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
+
 
 #victory, #gameOver {
 	z-index: 100;
@@ -72,8 +79,4 @@ body {
 #victory div button:hover, #gameOver div button:hover {
 	color: #ffffff;
 	background-color: #15709e;
-}
-
-#score, #clock {
-	font-size: 32px;
 }

@@ -2,13 +2,13 @@ window.onload = shuffleCards;
 
 //Parallel arrays to associate id and card
 var cards = [
-    'url(img/apu.jpg)',
+    'url(img/discostu.png)',
     'url(img/bart.jpg)',
     'url(img/homer.jpg)',
     'url(img/lisa.jpg)',
     'url(img/maggie.jpg)',
     'url(img/marge.png)',
-    'url(img/apu.jpg)',
+    'url(img/discostu.png)',
     'url(img/bart.jpg)',
     'url(img/homer.jpg)',
     'url(img/lisa.jpg)',
@@ -28,7 +28,7 @@ var score;
 var pairCards;
 var interval;
 var time;
-var reverse = 'url(img/reverse.png)';
+var reverse = 'url(img/reverse.jpeg)';
 
 //Load cards and values at the start
 function shuffleCards() {
@@ -108,7 +108,8 @@ function cronos() {
 	}
 	var show = min + ":" + seg + ":" + milis;
 	document.getElementById("clock").innerHTML = show;
-	if (milisIni === 0) {
+	if (seg === "00" ) {
+		$("#timer").hide;	
 		showGameOver();
 	}
 }
