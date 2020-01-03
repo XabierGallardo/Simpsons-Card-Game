@@ -59,8 +59,7 @@ function shuffleCards() {
 
 	//Show the initial score
 	showScore();
-	//$("#clock").html = "1:00.0";
-	document.getElementById("clock").innerHTML = "1:00.0";
+	document.getElementById("clock").innerHTML = "1:00:0";
 }
 
 //Enable transition efect on cards
@@ -76,7 +75,6 @@ function enableTransition() {
 
 //Show score on label
 function showScore() {
-	//$("#score").html = "SCORE: " + score;
 	document.getElementById("score").innerHTML = "SCORE: " + score;
 
 	//Check if score is 0
@@ -108,8 +106,7 @@ function cronos() {
 	}
 	var show = min + ":" + seg + ":" + milis;
 	document.getElementById("clock").innerHTML = show;
-	if (seg === "00" ) {
-		$("#timer").hide;	
+	if (seg === "00") {
 		showGameOver();
 	}
 }
