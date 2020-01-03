@@ -51,7 +51,7 @@ function shuffleCards() {
 		elements[i].style.backgroundImage = reverse;
 		elements[i].addEventListener("click", clickCard, true);
 		elements[i].style.visibility = "visible";
-		console.log("Event asociated to " + elements[i].id);
+		//console.log("Event asociated to " + elements[i].id);
 	}
 
 	//Enable delay's trainsition effect to avoid show the cards
@@ -106,7 +106,7 @@ function cronos() {
 	}
 	var show = min + ":" + seg + ":" + milis;
 	document.getElementById("clock").innerHTML = show;
-	if (seg === "00") {
+	if (seg == "00") {
 		showGameOver();
 	}
 }
@@ -117,7 +117,7 @@ function showGameOver() {
 	document.getElementById("gameOverBtn").addEventListener("click", restartGame, true);
 	var timeLeft = $("#clock").html();
 	$("#timer").css("visibility","hidden");
-	$("#gameOver .scoreAlert").html("Time: " + timeLeft + "<br>Score: 0");
+		$("#gameOver .scoreAlert").html("Time: " + timeLeft + "<br>Score: 0");
 	endGame();
 }
 
