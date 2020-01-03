@@ -2,13 +2,13 @@ window.onload = shuffleCards;
 
 //Parallel arrays to associate id and card
 var cards = [
-    'url(img/discostu.png)',
+    'url(img/grandpa.png)',
     'url(img/bart.jpg)',
     'url(img/homer.jpg)',
     'url(img/lisa.jpg)',
     'url(img/maggie.jpg)',
     'url(img/marge.png)',
-    'url(img/discostu.png)',
+    'url(img/grandpa.png)',
     'url(img/bart.jpg)',
     'url(img/homer.jpg)',
     'url(img/lisa.jpg)',
@@ -115,6 +115,8 @@ function cronos() {
 function showGameOver() {
 	document.getElementById("gameOver").style.display = "inline";
 	document.getElementById("gameOverBtn").addEventListener("click", restartGame, true);
+	$("#timer").css("visibility","hidden");
+	$("#gameOver .scoreAlert").text("Your score is 0");
 	endGame();
 }
 
@@ -122,6 +124,8 @@ function showGameOver() {
 function showVictory() {
 	document.getElementById("victory").style.display = "inline";
 	document.getElementById("victoryBtn").addEventListener("click", restartGame, true);
+	$("#timer").css("visibility","hidden");
+	$("#victory .scoreAlert").text("Your score is " + score);
 	endGame();
 }
 
@@ -134,7 +138,9 @@ function endGame() {
 
 //Restart game parameters and hide messages
 function restartGame(event) {
+	$("#timer").css("visibility","visible");
 	event.target.removeEventListener("click", restartGame, true);
+	score = '';
 	shuffleCards();
 	document.getElementById("gameOver").style.display = "none";
 	document.getElementById("victory").style.display = "none";
