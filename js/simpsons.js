@@ -115,8 +115,9 @@ function cronos() {
 function showGameOver() {
 	document.getElementById("gameOver").style.display = "inline";
 	document.getElementById("gameOverBtn").addEventListener("click", restartGame, true);
+	var timeLeft = $("#clock").html();
 	$("#timer").css("visibility","hidden");
-	$("#gameOver .scoreAlert").text("Your score is 0");
+	$("#gameOver .scoreAlert").html("Time: " + timeLeft + "<br>Score: 0");
 	endGame();
 }
 
@@ -124,8 +125,9 @@ function showGameOver() {
 function showVictory() {
 	document.getElementById("victory").style.display = "inline";
 	document.getElementById("victoryBtn").addEventListener("click", restartGame, true);
+	var timeLeft = $("#clock").html();
 	$("#timer").css("visibility","hidden");
-	$("#victory .scoreAlert").text("Your score is " + score);
+	$("#victory .scoreAlert").html("Time: " + timeLeft + "<br>Score: " + score);
 	endGame();
 }
 
@@ -140,7 +142,6 @@ function endGame() {
 function restartGame(event) {
 	$("#timer").css("visibility","visible");
 	event.target.removeEventListener("click", restartGame, true);
-	score = '';
 	shuffleCards();
 	document.getElementById("gameOver").style.display = "none";
 	document.getElementById("victory").style.display = "none";
