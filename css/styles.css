@@ -6,6 +6,7 @@ body {
 	display: flex;
 	align-items: baseline;
 	margin-left: 10px;
+	width: 97%;
 }
 
 #content {
@@ -34,11 +35,36 @@ body {
 }
 
 
-#score, #clock {
+#score, #clock, #reset {
 	font-size: 38px;
 	flex: 1;
 	padding-top: 2%;
 	padding-bottom: 2%;
+}
+
+#score {
+	padding-right: 6%;
+}
+
+#reset {
+	border: 2px solid;
+	border-radius: 10px;
+	text-align: center;
+	padding: 5px;
+}
+
+#reset a {
+	text-decoration: none;
+	color: black;
+}
+
+#reset a:hover {
+	color: white;
+}
+
+#reset:hover {
+	cursor: pointer;
+	background-color: black;
 }
 
 
