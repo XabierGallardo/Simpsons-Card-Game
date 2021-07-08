@@ -1,7 +1,10 @@
+//Initial calling
 window.onload = shuffleCards;
 
-//Parallel arrays to associate id and card
+
+//Parallel arrays to associate ids and cards
 var cards = [
+
     'url(img/grandpa.png)',
     'url(img/bart.jpg)',
     'url(img/homer.jpg)',
@@ -20,6 +23,7 @@ var ids = [
 	'card1','card2','card3','card4','card5','card6','card7','card8','card9','card10','card11','card12'
 ];
 
+
 //For game management
 var previousCard;
 var currentCard;
@@ -30,8 +34,10 @@ var interval;
 var time;
 var reverse = 'url(img/reverse.jpeg)';
 
+
 //Load cards and values at the start
 function shuffleCards() {
+
 	pairCards = 0;
 	score = 50;
 	counter = 0;
@@ -47,6 +53,7 @@ function shuffleCards() {
 
 	//Assignment initial values and events
 	for (var i = 0; i < elements.length; i++) {
+
 		elements[i].style.transition = "none";
 		elements[i].style.backgroundImage = reverse;
 		elements[i].addEventListener("click", clickCard, true);
@@ -62,8 +69,10 @@ function shuffleCards() {
 	document.getElementById("clock").innerHTML = "1:00:0";
 }
 
+
 //Enable transition efect on cards
 function enableTransition() {
+
 	//Get back card's div 
 	var elements = $(".card");
 
@@ -73,8 +82,10 @@ function enableTransition() {
 	}
 }
 
+
 //Show score on label
 function showScore() {
+
 	document.getElementById("score").innerHTML = "SCORE: " + score;
 
 	//Check if score is 0
@@ -83,56 +94,77 @@ function showScore() {
 	}
 }
 
+
 //Set timing on game
 function setTime() {
-time = new Date();
-time.setTime(time.getTime() + 60000);
-interval = setInterval(cronos, 10);
+
+	time = new Date();
+	time.setTime(time.getTime() + 60000);
+	interval = setInterval(cronos, 10);
 }
 
+
 function cronos() {
+
 	var milis = time - new Date();
 	var milisIni = milis;
 	var min = "0";
 	var seg = "00";
+
 	if (milis >= 60000) {
 		min = Math.floor(milis / 60000);
 		milis = milis % 60000;
 	}
+
 	if (milis > 1000) {
 		seg = Math.floor(milis / 1000);
 		if (seg < 10) seg = "0" + seg;
 		milis = Math.floor((milis % 1000)/100);
 	}
+
 	var show = min + ":" + seg + ":" + milis;
 	document.getElementById("clock").innerHTML = show;
+	
 	if (seg == "00") {
 		showGameOver();
 	}
 }
 
+
 //Show Game Over message and button
 function showGameOver() {
+
 	document.getElementById("gameOver").style.display = "inline";
 	document.getElementById("gameOverBtn").addEventListener("click", restartGame, true);
+
 	var timeLeft = $("#clock").html();
+
 	$("#timer").css("visibility","hidden");
 		$("#gameOver .scoreAlert").html("Time: " + timeLeft + "<br>Score: 0");
+
 	endGame();
 }
+
 
 //Show Victory message and button
 function showVictory() {
+
 	document.getElementById("victory").style.display = "inline";
 	document.getElementById("victoryBtn").addEventListener("click", restartGame, true);
+
 	var timeLeft = $("#clock").html();
+
 	$("#timer").css("visibility","hidden");
+
 	$("#victory .scoreAlert").html("Time: " + timeLeft + "<br>Score: " + score);
+
 	endGame();
 }
 
+
 //End time on game
 function endGame() {
+
 	clearInterval(interval);
 	interval = null;
 	time = null;
@@ -140,15 +172,21 @@ function endGame() {
 
 //Restart game parameters and hide messages
 function restartGame(event) {
+
 	$("#timer").css("visibility","visible");
+
 	event.target.removeEventListener("click", restartGame, true);
+
 	shuffleCards();
+
 	document.getElementById("gameOver").style.display = "none";
 	document.getElementById("victory").style.display = "none";
 }
 
+
 //When click event pops over a card
 function clickCard(event) {
+
 	if (interval === null) {
 		setTime();
 	}
@@ -196,15 +234,19 @@ function clickCard(event) {
 	}
 }
 
+
 function hideCards() {
+
 	//Reverse cards to hide them
 	document.getElementById(previousCard).style.backgroundImage = reverse;
 	document.getElementById(currentCard).style.backgroundImage = reverse;
+
 	//Initialices new try
 	newTry();
 }
 
 function removeCards() {
+
 	//Stores a new pair
 	pairCards++;
 
@@ -223,12 +265,10 @@ function removeCards() {
 	}
 }
 
+
 function newTry() {
+
 	previousCard = null;
 	currentCard = null;
 	counter = 0;
 }
-
-
-
-
