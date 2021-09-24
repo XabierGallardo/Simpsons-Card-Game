@@ -66,7 +66,7 @@ function shuffleCards() {
 
 	//Show the initial score
 	showScore();
-	document.getElementById("clock").innerHTML = "1:00:0";
+	document.getElementById("clock").innerHTML = "00:0";
 }
 
 
@@ -108,7 +108,6 @@ function cronos() {
 
 	var milis = time - new Date();
 	var milisIni = milis;
-	var min = "0";
 	var seg = "00";
 
 	if (milis >= 60000) {
@@ -122,7 +121,7 @@ function cronos() {
 		milis = Math.floor((milis % 1000)/100);
 	}
 
-	var show = min + ":" + seg + ":" + milis;
+	var show = seg + ":" + milis;
 	document.getElementById("clock").innerHTML = show;
 	
 	if (seg == "00") {
